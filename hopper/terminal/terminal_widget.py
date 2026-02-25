@@ -24,7 +24,7 @@ class TerminalWidget(QWidget):
         self.rows = 24
         self.screen = pyte.Screen(self.cols, self.rows)
         self.stream = pyte.Stream(self.screen)
-        shell = os.environ.get("SHELL", "/bin/bash")
+        shell = "/bin/bash"
         self.pty = PTYProcess(command=[shell])
         self.pty.data_received.connect(self.on_data_received)
         self.pty.process_exited.connect(self.on_process_exited)
@@ -180,7 +180,7 @@ class TerminalWidget(QWidget):
     def restart(self):
         self.pty.terminate_process(); self.pty.wait()
         self.screen.reset(); self._sel_start = self._sel_end = None
-        shell = os.environ.get("SHELL", "/bin/bash")
+        shell = "/bin/bash"
         self.pty = PTYProcess(command=[shell])
         self.pty.data_received.connect(self.on_data_received)
         self.pty.process_exited.connect(self.on_process_exited)
