@@ -1,0 +1,204 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <!-- Background gradient -->
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#0a1628"/>
+      <stop offset="100%" stop-color="#060d1a"/>
+    </radialGradient>
+
+    <!-- Card body gradient -->
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d3d4f"/>
+      <stop offset="50%" stop-color="#0a2e3d"/>
+      <stop offset="100%" stop-color="#062030"/>
+    </linearGradient>
+
+    <!-- Card edge/border gradient -->
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00c8a0"/>
+      <stop offset="50%" stop-color="#0096c7"/>
+      <stop offset="100%" stop-color="#005f8a"/>
+    </linearGradient>
+
+    <!-- H glow -->
+    <radialGradient id="hGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="1"/>
+      <stop offset="40%" stop-color="#a0f0e0" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#00c8a0" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Punch hole glow -->
+    <radialGradient id="holeGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00e5c0" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#0096c7" stop-opacity="0.1"/>
+    </radialGradient>
+
+    <!-- Outer glow filter -->
+    <filter id="outerGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- H text glow filter -->
+    <filter id="hTextGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Punctuation glow filter -->
+    <filter id="punctGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Card glow filter -->
+    <filter id="cardGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background circle -->
+  <rect width="400" height="400" fill="url(#bgGrad)" rx="40"/>
+
+  <!-- Outer card glow -->
+  <rect x="52" y="82" width="296" height="236" rx="6" ry="6"
+        fill="none" stroke="#00c8a0" stroke-width="2" opacity="0.15" filter="url(#cardGlow)"/>
+
+  <!-- Punch card body - clipped top-right corner -->
+  <path d="M 55 85 L 330 85 L 348 103 L 348 318 L 55 318 Z"
+        fill="url(#cardGrad)" stroke="url(#borderGrad)" stroke-width="2.5"
+        filter="url(#cardGlow)"/>
+
+  <!-- Clipped corner detail line -->
+  <line x1="330" y1="85" x2="330" y2="103" stroke="#00c8a0" stroke-width="1.5" opacity="0.6"/>
+  <line x1="330" y1="103" x2="348" y2="103" stroke="#00c8a0" stroke-width="1.5" opacity="0.6"/>
+
+  <!-- Top strip (like the printed area at top of punch cards) -->
+  <rect x="55" y="85" width="293" height="22" rx="0" fill="#0a3545" opacity="0.7"/>
+  <line x1="55" y1="107" x2="348" y2="107" stroke="#00c8a0" stroke-width="1" opacity="0.4"/>
+
+  <!-- Row of punch holes at top -->
+  <!-- Row 1 - small round holes near top -->
+  <g opacity="0.7">
+    <ellipse cx="80" cy="96" rx="5" ry="4" fill="#00e0b0" opacity="0.6"/>
+    <ellipse cx="100" cy="96" rx="5" ry="4" fill="#00e0b0" opacity="0.4"/>
+    <ellipse cx="120" cy="96" rx="5" ry="4" fill="#00e0b0" opacity="0.6"/>
+    <ellipse cx="140" cy="96" rx="5" ry="4" fill="#00e0b0" opacity="0.3"/>
+    <ellipse cx="160" cy="96" rx="5" ry="4" fill="#00e0b0" opacity="0.5"/>
+    <ellipse cx="180" cy="96" rx="5" ry="4" fill="#00e0b0" opacity="0.4"/>
+    <ellipse cx="200" cy="96" rx="5" ry="4" fill="#00e0b0" opacity="0.6"/>
+    <ellipse cx="220" cy="96" rx="5" ry="4" fill="#00e0b0" opacity="0.3"/>
+    <ellipse cx="240" cy="96" rx="5" ry="4" fill="#00e0b0" opacity="0.5"/>
+    <ellipse cx="260" cy="96" rx="5" ry="4" fill="#00e0b0" opacity="0.4"/>
+    <ellipse cx="280" cy="96" rx="5" ry="4" fill="#00e0b0" opacity="0.6"/>
+    <ellipse cx="300" cy="96" rx="5" ry="4" fill="#00e0b0" opacity="0.3"/>
+    <ellipse cx="320" cy="96" rx="5" ry="4" fill="#00e0b0" opacity="0.5"/>
+  </g>
+
+  <!-- COBOL punctuation rows - building the card texture -->
+  <!-- These use . - * characters typical of COBOL -->
+
+  <!-- Row 1 of punctuation -->
+  <g font-family="monospace" font-size="11" fill="#00b8a0" filter="url(#punctGlow)" opacity="0.75">
+    <text x="65" y="125">*  .  -  .  *  .  -  .  *  .  -  .  *  .  -  .  *  .  -  .  *</text>
+  </g>
+
+  <!-- Row 2 -->
+  <g font-family="monospace" font-size="11" fill="#0096c7" filter="url(#punctGlow)" opacity="0.65">
+    <text x="65" y="141">.  -  *  -  .  -  *  -  .  -  *  -  .  -  *  -  .  -  *  -  .</text>
+  </g>
+
+  <!-- Row 3 -->
+  <g font-family="monospace" font-size="11" fill="#00c8a0" filter="url(#punctGlow)" opacity="0.7">
+    <text x="65" y="157">-  .  .  *  -  .  .  *  -  .  .  *  -  .  .  *  -  .  .  *  -</text>
+  </g>
+
+  <!-- Row 4 - fades near center for H space -->
+  <g font-family="monospace" font-size="11" fill="#0088b5" filter="url(#punctGlow)" opacity="0.55">
+    <text x="65" y="173">*  -  .  -  *  -  .                           .  -  *  -  .  -</text>
+  </g>
+
+  <!-- Row 5 - more faded near center -->
+  <g font-family="monospace" font-size="11" fill="#00a090" filter="url(#punctGlow)" opacity="0.5">
+    <text x="65" y="189">.  *  -  .  *  .                                   .  *  .  -  *</text>
+  </g>
+
+  <!-- Row 6 -->
+  <g font-family="monospace" font-size="11" fill="#0096c7" filter="url(#punctGlow)" opacity="0.5">
+    <text x="65" y="205">-  .  *  -  .                                           .  -  *  .</text>
+  </g>
+
+  <!-- Row 7 - fades near center -->
+  <g font-family="monospace" font-size="11" fill="#00b8a0" filter="url(#punctGlow)" opacity="0.55">
+    <text x="65" y="221">*  .  -  .  *                                       *  .  -  .  *</text>
+  </g>
+
+  <!-- Row 8 -->
+  <g font-family="monospace" font-size="11" fill="#0088b5" filter="url(#punctGlow)" opacity="0.6">
+    <text x="65" y="237">.  -  *  -  .  -                               -  .  -  *  -  .</text>
+  </g>
+
+  <!-- Row 9 -->
+  <g font-family="monospace" font-size="11" fill="#00c8a0" filter="url(#punctGlow)" opacity="0.65">
+    <text x="65" y="253">*  .  .  -  *  .  .  *  -  .  .  *  -  .  .  *  -  .  .  *  -</text>
+  </g>
+
+  <!-- Row 10 -->
+  <g font-family="monospace" font-size="11" fill="#0096c7" filter="url(#punctGlow)" opacity="0.7">
+    <text x="65" y="269">.  -  *  -  .  -  *  -  .  -  *  -  .  -  *  -  .  -  *  -  .</text>
+  </g>
+
+  <!-- Row 11 -->
+  <g font-family="monospace" font-size="11" fill="#00b8a0" filter="url(#punctGlow)" opacity="0.65">
+    <text x="65" y="285">-  .  *  .  -  .  *  .  -  .  *  .  -  .  *  .  -  .  *  .  -</text>
+  </g>
+
+  <!-- Row 12 - bottom rows of holes -->
+  <g font-family="monospace" font-size="11" fill="#00a090" filter="url(#punctGlow)" opacity="0.6">
+    <text x="65" y="301">*  -  .  *  -  .  *  -  .  *  -  .  *  -  .  *  -  .  *  -  .</text>
+  </g>
+
+  <!-- Bottom strip -->
+  <rect x="55" y="296" width="293" height="22" rx="0" fill="#0a3545" opacity="0.5"/>
+  <line x1="55" y1="296" x2="348" y2="296" stroke="#00c8a0" stroke-width="1" opacity="0.3"/>
+
+  <!-- Glow circle behind H -->
+  <circle cx="201" cy="201" r="52" fill="url(#hGlow)" opacity="0.25"/>
+  <circle cx="201" cy="201" r="38" fill="#051820" opacity="0.85"/>
+  <circle cx="201" cy="201" r="36" fill="none" stroke="#00c8a0" stroke-width="1.5" opacity="0.5"/>
+
+  <!-- The H - centered, glowing -->
+  <text x="201" y="218"
+        font-family="Georgia, serif"
+        font-size="68"
+        font-weight="bold"
+        text-anchor="middle"
+        fill="#00e8c8"
+        filter="url(#hTextGlow)"
+        opacity="0.3">H</text>
+  <text x="201" y="218"
+        font-family="Georgia, serif"
+        font-size="68"
+        font-weight="bold"
+        text-anchor="middle"
+        fill="#ffffff"
+        filter="url(#hTextGlow)">H</text>
+
+  <!-- Corner decoration - mimicking card notch -->
+  <path d="M 330 85 L 348 103" fill="none" stroke="#00e0b0" stroke-width="1" opacity="0.4"/>
+
+</svg>
